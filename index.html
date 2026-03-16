@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sono:wght,MONO@200..800,1&display=swap');
+      html, body{
+        background: #001;
+        margin: 0;
+        min-height: 100vh;
+        color: #fff;
+        font-family: Sono;
+      }
+      .header{
+        padding: 5px;
+        min-height: 16px;
+        line-height: 1em;
+        background: linear-gradient(90deg, #000, #468, #40f);
+        border-bottom: 1px solid #4688;
+      }
+      #main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+      .thumb{
+        width: 400px;
+        height: 300px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-color: transparent;
+        border-radius: 10px;
+        border: 1px solid #4688;
+        margin: 10px;
+        cursor: pointer;
+        align-self: flex-start;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      SKYBOX PICKER
+    </div>
+    <div id="main">loading...</div>
+    <script type="module">
+    
+      var fileList = [
+        "https://srmcgann.github.io/skyboxes/HDRI/1.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/2.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/3.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/4.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/5.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/6.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/7.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/8.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/9.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/10.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/11.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/12.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/13.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/14.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/15.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/16.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/17.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/18.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/19.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/20.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/21.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/22.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/23.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/24.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/25.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/26.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/27.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/28.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/29.jpg",
+        "https://srmcgann.github.io/skyboxes/HDRI/29b.jpg",
+        "https://srmcgann.github.io/skyboxes2/HDRI/1.jpg",
+        "https://srmcgann.github.io/skyboxes2/HDRI/2.png",
+        "https://srmcgann.github.io/skyboxes2/HDRI/bricks.png",
+        "https://srmcgann.github.io/skyboxes2/HDRI/dodecahedron.png",
+        "https://srmcgann.github.io/skyboxes2/HDRI/milkyWay.jpg",
+        "https://srmcgann.github.io/skyboxes2/HDRI/nebula.jpg",
+        "https://srmcgann.github.io/skyboxes2/HDRI/nebula2.jpg",
+        "https://srmcgann.github.io/skyboxes2/HDRI/redwalk.jpg",
+        "https://srmcgann.github.io/skyboxes2/HDRI/stars.jpg",
+        "https://srmcgann.github.io/skyboxes2/HDRI/stars2.jpg",
+        "https://srmcgann.github.io/skyboxes2/HDRI/test.png",
+        "https://srmcgann.github.io/skyboxes3/HDRI/alices.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/angels.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/brutalism1.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/creepy_mansion.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/doommaze.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/fantasy1.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/maze_bold_dark.png",
+        "https://srmcgann.github.io/skyboxes3/HDRI/maze_bold_light.png",
+        "https://srmcgann.github.io/skyboxes3/HDRI/maze_bold_red.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/maze_bold_teal.png",
+        "https://srmcgann.github.io/skyboxes3/HDRI/maze_dark.png",
+        "https://srmcgann.github.io/skyboxes3/HDRI/maze_dark_large.png",
+        "https://srmcgann.github.io/skyboxes3/HDRI/maze_light.png",
+        "https://srmcgann.github.io/skyboxes3/HDRI/maze_light_large.png",
+        "https://srmcgann.github.io/skyboxes3/HDRI/pano1.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/pano2.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/pano3.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/pinkCluds.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/pinkCluds2.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/redCluds.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/skymaze.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/space.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/space4.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/spacemaze1.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/sparkleCluds.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/treehouses.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/ultraclouds1.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/ultraclouds2.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/ultraclouds3.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/ultraclouds4.jpg",
+        "https://srmcgann.github.io/skyboxes3/HDRI/ultracloudsbase.jpg",
+        "https://srmcgann.github.io/skyboxes4/HDRI/brutalism2.jpg",
+        "https://srmcgann.github.io/skyboxes4/HDRI/brutalism2_maze.jpg",
+        "https://srmcgann.github.io/skyboxes5/HDRI/everest.jpg",
+        "https://srmcgann.github.io/skyboxes5/HDRI/valley1.jpg",
+        "https://srmcgann.github.io/skyboxes7/HDRI/nebugrid.jpg",
+        "https://srmcgann.github.io/skyboxes7/HDRI/quickgrid.png",
+        "https://srmcgann.github.io/skyboxes7/HDRI/quickgrid_transparent.png",
+        "https://srmcgann.github.io/skyboxes7/HDRI/space.jpg"
+      ]
+      
+      
+      var main = document.querySelector('#main')
+      main.innerHTML = ''
+      
+      fileList.forEach((item, idx) => {
+        var el = document.createElement('div')
+        el.className = 'thumb'
+        el.title = item
+        var tidx = ((idx+1)+'').padStart(3, '0')
+        el.style.backgroundImage = `url(./thumbs/thumb${tidx}.png)`
+        el.onclick = () => {
+          var a = document.createElement('a')
+          a.target = '_blank'
+          a.href = item
+          a.style.position = 'absolute'
+          a.style.opacity = 0
+          document.body.appendChild(a)
+          a.click()
+          a.remove()
+        }
+        main.appendChild(el)
+      })
+    </script>
+  </body>
+</html>
